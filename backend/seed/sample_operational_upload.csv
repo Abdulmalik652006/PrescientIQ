@@ -1,0 +1,11 @@
+date,department,region,demand,revenue,workload,resourceUtilization,performance,absenteeism,incidents,status
+2026-08-01,Operations,Central,520,13000,68,72,84,2,0,active
+2026-08-02,Engineering,North,610,15250,74,78,81,3,1,active
+2026-08-03,Customer Support,South,455,11375,66,69,86,1,0,active
+2026-08-04,Logistics,East,700,17500,82,85,76,4,1,warning
+2026-08-05,Sales,West,640,16000,79,81,80,2,0,active
+2026-08-06,Operations,Central,585,14625,71,75,83,2,0,active
+2026-08-07,Engineering,North,625,15625,77,80,79,3,1,active
+2026-08-08,Customer Support,South,470,11750,67,70,85,2,0,active
+2026-08-09,Logistics,East,720,18000,84,88,74,5,2,critical
+2026-08-10,Sales,West,660,16500,80,83,78,3,1,warning
