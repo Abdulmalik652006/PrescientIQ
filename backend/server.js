@@ -23,7 +23,7 @@ const uploadRoutes = require('./routes/uploadRoutes');
 const chatRoutes = require('./routes/chatRoutes');
 
 const app = express();
-const allowedOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:3000')
+const allowedOrigins = (process.env.CLIENT_ORIGIN || 'https://prescientiq-2glldvjzf-abdul-a565.vercel.app/')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
@@ -48,7 +48,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 // --- Health check (also reports MongoDB + ML service reachability) ---
-app.get('/api/health', async (req, res) => {
+const healthCheck = async (req, res) => {
   const mlHealth = await mlService.checkHealth();
   res.json({
     success: true,
@@ -57,7 +57,16 @@ app.get('/api/health', async (req, res) => {
     mongo: isDbConnected() ? 'connected' : 'disconnected',
     mlService: mlHealth.ok ? 'reachable' : 'unreachable',
   });
+};
+
+app.get('/', (req, res) => {
+  res.json({
+    service: 'predictive-management-backend',
+    status: 'running',
+  });
 });
+app.get('/health', healthCheck);
+app.get('/api/health', healthCheck);
 
 // --- API routes ---
 app.use('/api/auth', authRoutes);
