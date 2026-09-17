@@ -550,14 +550,4 @@ Interested in:
 * AI Applications
 * Cloud & DevOps
 
----
 
-# 📜 License
-
-This project is developed for **educational, demonstration, and portfolio purposes**.
-
----
-
-## ⭐ Support
-
-If you find this project useful, consider giving the repository a ⭐ on GitHub.
