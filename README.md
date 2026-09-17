@@ -1,120 +1,563 @@
-# Predictive Management System
+# 🚀 PrescientIQ – AI-Powered Predictive Management System
 
-An AI-powered predictive management platform: **React frontend → Node.js/Express API gateway → MongoDB**, with a separate **Python FastAPI ML service** (5 trained scikit-learn models) providing demand, risk, resource, anomaly, and team-performance predictions.
+**PrescientIQ** is an AI-powered predictive management platform designed to help organizations make data-driven decisions using **machine learning, predictive analytics, real-time dashboards, risk analysis, forecasting, anomaly detection, and intelligent recommendations**.
 
-## Status
+The system combines a modern React dashboard with a Node.js/Express backend, MongoDB database, and a dedicated Python FastAPI machine-learning service.
 
-| Layer | Status |
-|---|---|
-| `backend/` (Node.js/Express + MongoDB) | ✅ Complete |
-| `ml-service/` (Python FastAPI + 5 trained models) | ✅ Complete — models trained and verified |
-| `frontend/` (React/Vite) | ⏳ Not yet built — see `frontend/README_PENDING.md` |
+---
 
-## Architecture
+## ✨ Features
 
+### 📊 Intelligent Dashboard
+
+* Real-time management KPIs
+* Performance monitoring
+* Operational insights
+* Interactive charts and visualizations
+* 3D neural visualization
+* Business performance overview
+
+### 🤖 AI & Machine Learning
+
+PrescientIQ includes multiple trained ML models for:
+
+* 📈 Demand Prediction
+* ⚠️ Risk Prediction
+* 👥 Resource Requirement Prediction
+* 🔍 Anomaly Detection
+* 🏆 Team Performance Prediction
+* 🔮 Future Forecasting
+
+### 📉 Analytics
+
+* Operational analytics
+* Performance analysis
+* Resource utilization
+* Workload analysis
+* Historical trend analysis
+* Data-driven insights
+
+### 🚨 Alerts & Risk Monitoring
+
+* Automated risk identification
+* Operational anomaly detection
+* Performance alerts
+* Risk-based recommendations
+
+### 👥 Team Management
+
+* Team performance tracking
+* Team analytics
+* Resource monitoring
+* Performance predictions
+
+### 📑 Reports
+
+* Generate management reports
+* View analytical results
+* Predictive insights
+* Operational summaries
+
+### 💬 AI Assistant
+
+An integrated AI chat assistant allows users to interact with the platform and obtain intelligent insights from the management system.
+
+### 🔐 Authentication
+
+* Secure user authentication
+* JWT-based authorization
+* Role-based access
+* Protected API endpoints
+
+---
+
+## 🏗️ System Architecture
+
+```text
+                    ┌──────────────────────┐
+                    │   React Frontend     │
+                    │   Vite + Tailwind    │
+                    └──────────┬───────────┘
+                               │
+                         REST / Axios
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │ Node.js + Express    │
+                    │    API Gateway       │
+                    └───────┬───────┬──────┘
+                            │       │
+                     MongoDB       │
+                            │       │
+                            ▼       ▼
+                    ┌──────────┐  ┌──────────────────┐
+                    │ MongoDB  │  │ Python FastAPI   │
+                    │ Database │  │   ML Service     │
+                    └──────────┘  └────────┬─────────┘
+                                           │
+                                           ▼
+                              ┌────────────────────────┐
+                              │ Machine Learning Models │
+                              │                        │
+                              │ • Demand               │
+                              │ • Risk                 │
+                              │ • Resources             │
+                              │ • Anomaly              │
+                              │ • Team Performance     │
+                              └────────────────────────┘
 ```
-React (frontend)
-   |  Axios / REST
-   v
-Node.js + Express (backend)  ---- REST ---->  Python FastAPI (ml-service)
-   |                                                |
-   v                                                v
-MongoDB                                    5 trained scikit-learn models
-(users, operations, resources,             (demand, risk, resource,
- teams, predictions, alerts,                anomaly, team performance)
- forecasts, recommendations, reports)
+
+The **React frontend communicates with the Node.js backend**, while the backend communicates with MongoDB and the Python ML service.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React.js
+* Vite
+* Tailwind CSS
+* React Router
+* Axios
+* Recharts
+* Three.js
+* Lucide React
+* React Hot Toast
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT Authentication
+* bcryptjs
+* Axios
+* Multer
+* Helmet
+* CORS
+
+### Machine Learning
+
+* Python
+* FastAPI
+* Scikit-learn
+* Pandas
+* NumPy
+* Joblib
+* Pydantic
+* Uvicorn
+
+### Machine Learning Algorithms
+
+* Gradient Boosting Regressor
+* Random Forest Classifier
+* Random Forest Multi-Output Regression
+* Isolation Forest
+
+---
+
+## 📂 Project Structure
+
+```text
+PrescientIQ/
+│
+├── backend/
+│   ├── config/
+│   │   └── db.js
+│   │
+│   ├── controllers/
+│   │   ├── alertController.js
+│   │   ├── analyticsController.js
+│   │   ├── authController.js
+│   │   ├── chatController.js
+│   │   ├── dashboardController.js
+│   │   ├── forecastController.js
+│   │   ├── predictionController.js
+│   │   ├── reportController.js
+│   │   ├── resourceController.js
+│   │   ├── teamController.js
+│   │   └── uploadController.js
+│   │
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   ├── seed/
+│   ├── server.js
+│   ├── package.json
+│   └── .env.example
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── hooks/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── utils/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── ml-service/
+│   ├── models/
+│   │   ├── anomaly_model.pkl
+│   │   ├── demand_model.pkl
+│   │   ├── resource_model.pkl
+│   │   ├── risk_model.pkl
+│   │   └── team_performance_model.pkl
+│   │
+│   ├── predictors/
+│   ├── training/
+│   ├── generate_training_data.py
+│   ├── main.py
+│   └── requirements.txt
+│
+└── README.md
 ```
 
-The frontend never talks to MongoDB or the ML service directly — everything routes through the Node.js backend.
+---
 
-## Folder structure
+# ⚙️ Installation & Setup
 
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/PrescientIQ.git
+cd PrescientIQ
 ```
-predictive-management-system/
-├── backend/          Node.js/Express API — see backend/ for models, routes, controllers, services
-├── ml-service/        Python FastAPI ML service — 5 trained models + training scripts
-├── frontend/           React/Vite dashboard (pending)
-└── README.md            (this file)
-```
 
-## Running the backend
+---
+
+## 2. Backend Setup
+
+Open a terminal:
 
 ```bash
 cd backend
 npm install
-cp .env.example .env      # edit MONGO_URI, JWT_SECRET, ML_SERVICE_URL as needed
-npm run seed               # populates MongoDB with realistic demo data
-npm run dev                 # starts on http://localhost:5000
 ```
 
-Demo credentials (created by the seed script):
+Create your environment file:
 
-| Email | Password | Role |
-|---|---|---|
-| admin@predictive.io | password123 | Admin |
-| manager@predictive.io | password123 | Manager |
-| analyst@predictive.io | password123 | Analyst |
-| viewer@predictive.io | password123 | Viewer |
+```bash
+copy .env.example .env
+```
 
-## Running the ML service
+For Linux/macOS:
+
+```bash
+cp .env.example .env
+```
+
+Configure your `.env`:
+
+```env
+MONGO_URI=mongodb://127.0.0.1:27017/prescientiq
+
+JWT_SECRET=your_secure_secret
+JWT_EXPIRES_IN=7d
+
+PORT=5000
+NODE_ENV=development
+
+ML_SERVICE_URL=http://127.0.0.1:8000
+ML_SERVICE_TIMEOUT_MS=8000
+
+CLIENT_ORIGIN=http://localhost:5173
+
+GROQ_API_KEY=your_groq_api_key
+GROQ_CHAT_MODEL=your_chat_model
+```
+
+---
+
+## 3. Start MongoDB
+
+Make sure MongoDB is running locally or use **MongoDB Atlas**.
+
+For MongoDB Atlas, replace:
+
+```env
+MONGO_URI=your_mongodb_atlas_connection_string
+```
+
+---
+
+## 4. Seed Demo Data
+
+From the `backend` directory:
+
+```bash
+npm run seed
+```
+
+This creates sample users and operational data for testing the application.
+
+---
+
+## 5. Start Backend
+
+```bash
+npm run dev
+```
+
+Backend will run on:
+
+```text
+http://localhost:5000
+```
+
+Health check:
+
+```text
+http://localhost:5000/api/health
+```
+
+---
+
+# 🧠 ML Service Setup
+
+Open a new terminal:
 
 ```bash
 cd ml-service
-python -m venv venv && source venv/bin/activate   # (or venv\Scripts\activate on Windows)
+```
+
+Create a Python virtual environment:
+
+### Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### Linux/macOS
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
-# Models are already trained and included in models/*.pkl.
-# To regenerate data and retrain from scratch instead:
-python generate_training_data.py
-python training/train_demand.py
-python training/train_risk.py
-python training/train_resource.py
-python training/train_anomaly.py
-python training/train_team_performance.py
+Start the ML service:
 
+```bash
 uvicorn main:app --reload --port 8000
 ```
 
-Verify it's up: `curl http://localhost:8000/health`
+ML service:
 
-Interactive API docs (FastAPI auto-generates these): `http://localhost:8000/docs`
-
-## Environment variables (backend/.env)
-
-```
-MONGO_URI=mongodb://127.0.0.1:27017/predictive_management
-JWT_SECRET=replace_this_with_a_long_random_secret
-JWT_EXPIRES_IN=7d
-PORT=5000
-NODE_ENV=development
-ML_SERVICE_URL=http://127.0.0.1:8000
-ML_SERVICE_TIMEOUT_MS=8000
-CLIENT_ORIGIN=http://localhost:5173
-OPENAI_API_KEY=your_openai_api_key
-OPENAI_CHAT_MODEL=gpt-4o-mini
+```text
+http://localhost:8000
 ```
 
-The chat assistant is available from the lower-right chat button after signing in. Add the real `OPENAI_API_KEY` to `backend/.env` and restart the backend; the key is only used server-side and is never sent to the frontend.
+Health check:
 
-## Trained model performance (on synthetic training data)
+```text
+http://localhost:8000/health
+```
 
-| Model | Metric | Result |
-|---|---|---|
-| Demand (GradientBoostingRegressor) | MAPE | 0.34% |
-| Risk (RandomForestClassifier) | Accuracy | 98.5% |
-| Resource requirement (RandomForest, multi-output) | MAE | 0.14 (resources), 0.11 (capacity gap) |
-| Anomaly detection (IsolationForest) | Flag rate | 6.0% (contamination=0.06) |
-| Team performance (GradientBoostingRegressor) | MAE | 0.18 performance points |
+FastAPI documentation:
 
-These numbers are high because the synthetic training data encodes clean, learnable relationships by design (for a believable demo). Real production data will have more noise — retrain periodically against actual `actualValue` outcomes recorded on the `Prediction` collection to track real-world accuracy over time.
+```text
+http://localhost:8000/docs
+```
 
-## Troubleshooting
+---
 
-- **Backend can't reach MongoDB**: confirm `MONGO_URI` and that MongoDB is running (`mongod` locally, or an Atlas connection string).
-- **Backend says ML service unreachable**: confirm `uvicorn` is running on the port in `ML_SERVICE_URL`, and that `/health` responds.
-- **CORS errors from the frontend**: confirm `CLIENT_ORIGIN` in `backend/.env` matches the frontend's dev server URL.
-- **Predictions look flat/repetitive**: reseed with `npm run seed` — it regenerates 2 years of correlated synthetic history.
+# 🎨 Frontend Setup
 
-## Next step
+Open another terminal:
 
-Phase 3: build the React/Vite frontend (Dashboard, Analytics, Predict, Alerts, Resources, Forecasts, Teams, Reports, Settings) wired to this backend's REST API.
+```bash
+cd frontend
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The frontend will normally be available at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+# 🔌 ML API Endpoints
+
+| Method | Endpoint                    | Purpose             |
+| ------ | --------------------------- | ------------------- |
+| GET    | `/health`                   | ML service health   |
+| POST   | `/predict/demand`           | Demand prediction   |
+| POST   | `/predict/risk`             | Risk prediction     |
+| POST   | `/predict/resources`        | Resource prediction |
+| POST   | `/predict/team-performance` | Team performance    |
+| POST   | `/detect/anomaly`           | Anomaly detection   |
+| POST   | `/forecast`                 | Future forecasting  |
+
+---
+
+# 📊 Machine Learning Models
+
+| Prediction       | Model                       |
+| ---------------- | --------------------------- |
+| Demand           | Gradient Boosting Regressor |
+| Risk             | Random Forest Classifier    |
+| Resources        | Random Forest Multi-Output  |
+| Anomaly          | Isolation Forest            |
+| Team Performance | Gradient Boosting Regressor |
+
+The included models are trained using generated/synthetic operational data for demonstration and development purposes.
+
+> **Note:** Model performance on synthetic data should not be interpreted as production performance. Real-world deployment requires training and validation using representative organizational data.
+
+---
+
+# 🔐 Security
+
+PrescientIQ uses several security mechanisms:
+
+* JWT authentication
+* Password hashing with bcrypt
+* Protected API routes
+* Helmet security middleware
+* CORS configuration
+* Environment variables for secrets
+* Backend-only AI API key handling
+* Request validation
+
+### ⚠️ Important
+
+Never commit your `.env` file or API keys to GitHub.
+
+Make sure `.gitignore` contains:
+
+```gitignore
+.env
+node_modules/
+__pycache__/
+*.pyc
+venv/
+dist/
+```
+
+---
+
+# 🖥️ Main Application Modules
+
+```text
+Dashboard
+    │
+    ├── Analytics
+    ├── Predictions
+    ├── Forecasts
+    ├── Alerts
+    ├── Resources
+    ├── Teams
+    ├── Reports
+    └── Settings
+```
+
+---
+
+# 🔄 Application Workflow
+
+```text
+User
+ │
+ ▼
+React Dashboard
+ │
+ ▼
+Node.js / Express API
+ │
+ ├──────────────► MongoDB
+ │
+ ▼
+Python FastAPI ML Service
+ │
+ ▼
+Machine Learning Models
+ │
+ ▼
+Prediction / Forecast / Risk Result
+ │
+ ▼
+Node.js API
+ │
+ ▼
+React Dashboard
+```
+
+---
+
+# 🎯 Use Cases
+
+PrescientIQ can be used for:
+
+* Operational planning
+* Demand forecasting
+* Workforce planning
+* Resource allocation
+* Risk monitoring
+* Team performance analysis
+* Anomaly detection
+* Business intelligence
+* Predictive decision support
+
+---
+
+# 🚀 Future Enhancements
+
+* Real-time streaming analytics
+* Advanced deep-learning models
+* Automated model retraining
+* Cloud-based ML deployment
+* Role-based enterprise permissions
+* Advanced notification system
+* More forecasting algorithms
+* Data warehouse integration
+* Mobile application
+* Explainable AI dashboards
+
+---
+
+# 👨‍💻 Developer
+
+**Abdul Malik**
+
+B.Tech Artificial Intelligence & Data Science
+
+Interested in:
+
+* Machine Learning
+* Data Science
+* Full-Stack Development
+* AI Applications
+* Cloud & DevOps
+
+---
+
+# 📜 License
+
+This project is developed for **educational, demonstration, and portfolio purposes**.
+
+---
+
+## ⭐ Support
+
+If you find this project useful, consider giving the repository a ⭐ on GitHub.
