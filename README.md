@@ -546,7 +546,6 @@ Interested in:
 
 * Machine Learning
 * Data Science
-* Full-Stack Development
 * AI Applications
 * Cloud & DevOps
 
